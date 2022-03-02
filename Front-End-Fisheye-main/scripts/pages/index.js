@@ -1,14 +1,16 @@
-
+//import showHeader from '../factories/header.js'
 
 async function getPhotographers() {
 
     // Penser à remplacer par les données récupérées dans le json
     const respons = await fetch("data/photographers.json");
+    console.log(respons);
     let data = await respons.json();
     console.log(data);
-    let dataPhotographers = [...data.photographers];
 
+    let dataPhotographers = [...data.photographers];
     let dataMedia = [...data.media];
+
     // et bien retourner le tableau photographers seulement une fois
     return {
         photographers: dataPhotographers, 
@@ -30,6 +32,7 @@ async function displayData(photographers) {
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
+    // showHeader()
     displayData(photographers);
 };
 
