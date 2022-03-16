@@ -1,5 +1,11 @@
 @import url("photographer.css");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
@@ -70,10 +76,14 @@ h1 {
 }
 
 .photograph-header {
+  background-color: #FAFAFA;
+  width: 90%;
+  height: 300px;
   display: flex;
   justify-content: space-between;
   padding: 0 30px 0 30px;
   align-items: center;
+  max-width: 1240px;
 }
 
 .infoContainer {
@@ -91,6 +101,7 @@ h1 {
   width: 33%;
   align-items: center;
 }
+
 .imgContainer {
   display: flex;
   justify-content: center;
@@ -107,6 +118,7 @@ h1 {
   border-radius: 100px;
   object-fit: cover;
 }
+
 #photograph-name {
   color: #d3573c;
   font-size: 35px;
@@ -118,9 +130,66 @@ h1 {
   color: #901c1c;
   font-size: 13px;
 }
+
 #photograph-tagline {
   display: block;
   color: #757575;
   font-size: 14px;
   margin-top: 4px;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photographer-medias {
+  width: 90%;
+  max-width: 1240px;
+  padding-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.photograph-media-item {
+  width: 350px;
+  height: 350px;
+}
+
+.photograph-media-item_bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.photograph-media-item_bottom div {
+  display: flex;
+}
+
+.photograph-media-item_bottom p {
+  color: #901C1C;
+  font-size: 20px;
+}
+
+.photograph-media-item_bottom-likes {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: #901C1C;
+  font-size: 20px;
+}
+
+.photograph-media-item_bottom a svg {
+  width: 20px;
+  color: #901c1c;
+} 
+
+.photograph-media-item img,
+.photograph-media-item video {
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
 }
