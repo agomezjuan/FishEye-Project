@@ -31,6 +31,7 @@ function displayModal() {
     const textLabel = document.createElement('label')
     textLabel.innerText = "Message"
     const textarea = document.createElement('textarea')
+    textarea.setAttribute('rows', '5')
     textDiv.appendChild(textLabel)
    textDiv.appendChild(textarea)
 

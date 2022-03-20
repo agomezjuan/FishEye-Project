@@ -64,6 +64,7 @@ function displayPhotographerHeader() {
 
 function displayPhotographerMedia(photographer) {
   const main = document.querySelector("main");
+  filterMedias()
   const mediaSection = document.createElement("section");
   mediaSection.setAttribute("class", "photographer-medias");
 
@@ -111,6 +112,48 @@ function displayPhotographerMedia(photographer) {
   main.appendChild(mediaSection);
 }
 
+function filterMedias(){
+  let main = document.querySelector('main')
+
+let filters = document.createElement('section')
+filters.classList.add('filters')
+
+
+filters.insertAdjacentHTML('afterbegin', '<p>Trier par:</p>')
+
+main.appendChild(filters)
+
+let selection = document.createElement('select')
+let option1 = document.createElement('option')
+option1.innerText= 'Popularité'
+let option2 = document.createElement('option')
+option2.innerText= 'Date'
+let option3 = document.createElement('option')
+option3.innerText= 'Titre'
+
+selection.appendChild(option1)
+selection.appendChild(option2)
+selection.appendChild(option3)
+
+filters.appendChild(selection)
+
+}
+
+function sumLikes() {
+  let mainControl = document.querySelector('main')
+  let total_likes = document.createElement('div')
+
+  total_likes.classList.add('sum-likes')
+
+  let p = document.createElement('p')
+  p.innerText = 'texto de prueba'
+
+  total_likes.appendChild(p)
+
+  mainControl.appendChild(total_likes)
+}
+
+
 async function init() {
   ({ photographers } = await getPhotographers());
 
@@ -126,6 +169,7 @@ async function init() {
   displayPhotographerHeader();
   displayPhotographerMedia(photographer);
   //displayPhotographerInfos();
+  sumLikes()
 }
 
 init();

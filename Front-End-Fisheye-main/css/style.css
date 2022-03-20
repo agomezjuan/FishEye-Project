@@ -142,6 +142,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+position: relative;
 }
 
 .photographer-medias {
@@ -166,6 +167,7 @@ h1 {
 
 .photograph-media-item_bottom div {
   display: flex;
+  justify-content: space-between;
 }
 
 .photograph-media-item_bottom p {
@@ -179,11 +181,13 @@ h1 {
   align-items: center;
   color: #901C1C;
   font-size: 20px;
+  margin-right: 10px;
 }
 
 .photograph-media-item_bottom a svg {
   width: 20px;
-  color: #901c1c;
+  fill: #901c1c;
+  padding-top: 4px;
 } 
 
 .photograph-media-item img,
