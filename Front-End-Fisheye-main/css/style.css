@@ -1,4 +1,5 @@
 @import url("photographer.css");
+@import url("modal.css");
 
 * {
   margin: 0;
@@ -34,6 +35,8 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
+  width: 90%;
+  max-width: 1240px;
 }
 
 .photographer_section article {
@@ -76,9 +79,10 @@ h1 {
 }
 
 .photograph-header {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   width: 90%;
   height: 300px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   padding: 0 30px 0 30px;
@@ -86,33 +90,35 @@ h1 {
   max-width: 1240px;
 }
 
-.infoContainer {
+.info-photographer {
   display: flex;
   width: 33%;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start;
+  padding-left: 40px;
 }
 
-.contactContainer {
+.contact-container {
   display: flex;
   justify-content: center;
   width: 33%;
   align-items: center;
+  margin: 0 20px;
 }
 
-.imgContainer {
+.img-photographer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 100%;
   width: 33%;
+  padding-right: 40px;
 }
 
 #photograph-img {
   display: block;
-  margin: 0 auto;
   height: 200px;
   width: 200px;
   border-radius: 100px;
@@ -142,7 +148,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-position: relative;
+  position: relative;
 }
 
 .photographer-medias {
@@ -157,6 +163,7 @@ position: relative;
 .photograph-media-item {
   width: 350px;
   height: 350px;
+  margin-bottom: 20px;
 }
 
 .photograph-media-item_bottom {
@@ -171,7 +178,7 @@ position: relative;
 }
 
 .photograph-media-item_bottom p {
-  color: #901C1C;
+  color: #901c1c;
   font-size: 20px;
 }
 
@@ -179,7 +186,7 @@ position: relative;
   display: flex;
   justify-content: right;
   align-items: center;
-  color: #901C1C;
+  color: #901c1c;
   font-size: 20px;
   margin-right: 10px;
 }
@@ -188,7 +195,7 @@ position: relative;
   width: 20px;
   fill: #901c1c;
   padding-top: 4px;
-} 
+}
 
 .photograph-media-item img,
 .photograph-media-item video {
@@ -197,3 +204,5 @@ position: relative;
   border-radius: 5px;
   object-fit: cover;
 }
+
+.

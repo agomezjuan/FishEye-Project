@@ -1,0 +1,156 @@
+.media-modal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #901c1c;
+  width: 100%;
+  height: 100%;
+}
+.media-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.media-modal-img-container {
+  position: relative;
+}
+.media-modal-img {
+  width: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.media-modal-title {
+}
+.media-modal-close {
+  position: absolute;
+  font-size: 3.5em;
+  top: -27px;
+  right: -38px;
+}
+.media-modal .prev {
+  left: -38px;
+}
+.media-modal .next {
+  right: -38px;
+}
+
+.media-modal .prev,
+.media-modal .next {
+  position: absolute;
+  font-size: 2.2em;
+  margin: 5px;
+  top: 50%;
+}
+
+.media-modal .prev,
+.media-modal .next,
+.media-modal-close {
+  cursor: pointer;
+}
+
+.media-modal img,
+.media-modal video {
+  max-height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 0.25em;
+}
+
+#contact_modal .modal {
+  background-color: #db8876;
+}
+
+.modal-container {
+  background-color: rgba(255, 255, 255, 0.3);
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  position: relative;
+  border-radius: 5px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  margin: auto;
+}
+
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal header img {
+  cursor: pointer;
+}
+
+.modal header h1 {
+  font-weight: normal;
+  text-align: center;
+  color: black;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  color: #312e2e;
+  font-size: 26px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+form textarea {
+  width: 100%;
+  height: 75px;
+  font-size: 1.25em;
+  padding: 10px;
+}
+
+form input {
+  padding-left: 10px;
+  font-size: 1.2em;
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+}
+
+.contact_button {
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  padding: 9px;
+  width: 150px;
+  height: 50px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
