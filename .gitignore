@@ -1,0 +1,4 @@
+venv
+.vscode
+img_resizer.py
+requirements.txt
