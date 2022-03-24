@@ -36,19 +36,22 @@
 .modal header {
   justify-content: space-between;
   width: 100%;
+  height: auto;
   position: relative;
 }
 
 .modal header img {
   cursor: pointer;
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 5px;
+  right: 5px;
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 40px;
   font-weight: normal;
+  margin-bottom: 10px;
+  line-height: 100%;
 }
 
 form {
@@ -94,24 +97,26 @@ form textarea {
 .filters p {
   text-align: left;
   margin-right: 20px;
+  font-size: 20px;
 }
 .filters select {
   background-color: #901c1c;
   color: white;
+  font-size: 18px;
   border: 0;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 10px;
 }
 
-.filters option:nth-child(2) {
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+.filters .option {
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
 }
 
 .sum-info {
   display: flex;
   justify-content: space-between;
-  padding: 21px 34px;
+  padding: 18px 34px;
   position: fixed;
   bottom: 0;
   right: 50px;
@@ -122,8 +127,7 @@ form textarea {
   color: #000000;
 }
 
-.sum-info #photograph-infos-likes svg {
-  width: 20px;
-  fill: #000000;
-  padding-top: 4px;
+#photograph-infos-likes,
+#photograph-infos-price {
+  font-size: 24px;
 }

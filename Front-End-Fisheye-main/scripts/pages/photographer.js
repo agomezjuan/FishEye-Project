@@ -1,8 +1,8 @@
 let mediaModal = document.getElementById("media_modal");
-let heart_likes = `<svg aria-hidden="true" aria-label="likes" focusable="false" data-prefix="fas" data-icon="heart" role="img" viewBox="0 0 512 512"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>`;
+let contactForm = document.getElementById("contact_modal");
+let mediaLiked = [];
 
 async function getPhotographers() {
-  // Penser à remplacer par les données récupérées dans le json
   const respons = await fetch("data/photographers.json");
 
   let data = await respons.json();
@@ -11,7 +11,6 @@ async function getPhotographers() {
   let dataMedia = [...data.media];
 
   photographers.forEach((photographer) => {
-    // push medias according to photographerId
     const photographerMedias = dataMedia.filter(
       (photographerMedia) =>
         photographerMedia.photographerId === photographer.id
@@ -29,7 +28,6 @@ function displayPhotographerHeader() {
   const headerCityElement = document.querySelector("#photograph-city");
   const headerTaglineElement = document.querySelector("#photograph-tagline");
   const headerImgElement = document.querySelector("#photograph-img");
-  //const contactModalHeaderElement = document.querySelector('#contact_modal header h1 span');
 
   const infoContainer = document.createElement("div");
   infoContainer.setAttribute("class", "info-photographer");
@@ -52,7 +50,6 @@ function displayPhotographerHeader() {
   photographHeader.appendChild(imgContainer);
 
   headerNameElement.textContent = photographer.name;
-  //contactModalHeaderElement.textContent = photographer.name;
   headerCityElement.textContent = `${photographer.city}, ${photographer.country}`;
   headerTaglineElement.textContent = photographer.tagline;
   headerImgElement.setAttribute(
@@ -74,23 +71,17 @@ function displayFilter() {
 
   let selection = document.createElement("select");
   selection.setAttribute("onchange", "filterMedias(this.value)");
-  let option1 = document.createElement("option");
-  option1.setAttribute("value", "popularity");
-  option1.innerText = "Popularité";
-  let option2 = document.createElement("option");
-  option2.setAttribute("value", "date");
-  option2.innerText = "Date";
-  let option3 = document.createElement("option");
-  option3.setAttribute("value", "title");
-  option3.innerText = "Titre";
 
-  selection.appendChild(option1);
-  selection.appendChild(option2);
-  selection.appendChild(option3);
+  let filterOpions = { popularity: "Popularité", date: "Date", title: "Titre" };
+
+  for (let option in filterOpions) {
+    let optionSelect = document.createElement("option");
+    optionSelect.setAttribute("value", option);
+    optionSelect.innerHTML = `<div class="option">${filterOpions[option]}</div>`;
+    selection.appendChild(optionSelect);
+  }
 
   filters.appendChild(selection);
-
-  //selection.addEventListener("onchange", filterMedias(this.value));
 }
 
 function displayPhotographerMedia(photographer) {
@@ -126,7 +117,9 @@ function displayPhotographerMedia(photographer) {
                 </span>
                 <a href="#!" tabindex="${
                   newMedia.tabindex + 3
-                }" onclick="incrementMediaLike(${newMedia._id})">${heart_likes}
+                }" onclick="incrementMediaLike(${
+            newMedia._id
+          })"><i class="fa-solid fa-heart"></i>
                 </a>
               </div>
             </div>
@@ -142,6 +135,10 @@ function displayPhotographerMedia(photographer) {
 
 function displayPhotographerInfos() {
   let mainControl = document.querySelector("main");
+
+  if (document.querySelector(".sum-info")) {
+    document.querySelector(".sum-info").remove();
+  }
   let info = document.createElement("div");
 
   info.classList.add("sum-info");
@@ -155,11 +152,12 @@ function displayPhotographerInfos() {
   const totalMediasLikes = () =>
     photographer.medias.reduce((acc, curr) => acc + curr.likes, 0);
 
-  totalLikes.innerHTML = `${totalMediasLikes()} ${heart_likes}`;
+  totalLikes.innerHTML = `${totalMediasLikes()} <i class="fa-solid fa-heart"></i>`;
   infoPrice.textContent = `${photographer.price} €/jour`;
 
-  mainControl.appendChild(totalLikes);
-  mainControl.appendChild(infoPrice);
+  info.appendChild(totalLikes);
+  info.appendChild(infoPrice);
+  mainControl.appendChild(info);
 }
 
 function filterMedias(option) {
@@ -238,13 +236,13 @@ function createMediaModal() {
   prevMediaBtn.classList.add("prev");
   prevMediaBtn.setAttribute("title", "Previous image");
   prevMediaBtn.setAttribute("onclick", "mediaModalSlide(-1)");
-  prevMediaBtn.innerHTML = "&#10094;";
+  prevMediaBtn.innerHTML = "<";
 
   const nextMediaBtn = document.createElement("a");
   nextMediaBtn.classList.add("next");
   nextMediaBtn.setAttribute("title", "Next image");
   nextMediaBtn.setAttribute("onclick", "mediaModalSlide(1)");
-  nextMediaBtn.innerHTML = "&#10095;";
+  nextMediaBtn.innerHTML = ">";
 
   const mediaTitle = document.createElement("div");
   mediaTitle.classList.add("media-modal-title");
@@ -269,6 +267,28 @@ function displayMediaModal() {
   mediaModal.style.display = "flex";
 }
 
+function incrementMediaLike(mediaLikedId) {
+  photographer.medias.forEach((media) => {
+    if (media.id === mediaLikedId) {
+      if (!mediaLiked.includes(mediaLikedId)) {
+        media.likes++;
+        document.querySelector(
+          `[data-id='${mediaLikedId}'] .photograph-media-item_bottom-likes`
+        ).innerHTML = media.likes;
+        mediaLiked.push(mediaLikedId);
+      } else {
+        media.likes--;
+        document.querySelector(
+          `[data-id='${mediaLikedId}'] .photograph-media-item_bottom-likes`
+        ).innerHTML = media.likes;
+        mediaLiked.pop(mediaLikedId);
+      }
+
+      displayPhotographerInfos();
+    }
+  });
+}
+
 function closeMediaModal() {
   mediaModal.style.display = "none";
 }
@@ -286,7 +306,12 @@ async function init() {
   displayFilter();
   displayPhotographerMedia(photographer);
   createMediaModal();
-  //displayPhotographerInfos();
+  displayPhotographerInfos();
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    closeModal();
+  });
 }
 
 init();
