@@ -235,13 +235,13 @@ function createMediaModal() {
   prevMediaBtn.classList.add("prev");
   prevMediaBtn.setAttribute("title", "Previous image");
   prevMediaBtn.setAttribute("onclick", "mediaModalSlide(-1)");
-  prevMediaBtn.innerHTML = "<";
+  prevMediaBtn.innerHTML = `&#10096;`;
 
   const nextMediaBtn = document.createElement("a");
   nextMediaBtn.classList.add("next");
   nextMediaBtn.setAttribute("title", "Next image");
   nextMediaBtn.setAttribute("onclick", "mediaModalSlide(1)");
-  nextMediaBtn.innerHTML = ">";
+  nextMediaBtn.innerHTML = `&#10097;`;
 
   const mediaTitle = document.createElement("div");
   mediaTitle.classList.add("media-modal-title");

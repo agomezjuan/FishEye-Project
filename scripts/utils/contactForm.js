@@ -88,8 +88,19 @@ async function displayModal() {
     e.preventDefault();
 
     if (validate()) {
-      alert("Message envoyé avec succès.");
-      closeModal();
+      const modalForm = document.querySelector(".modal");
+      modalForm.innerHTML = `<h2 style="color: white">Message envoyé avec succès. <i style="color: green" class="fa-solid fa-check"></i></h2>`;
+      setTimeout(() => {
+        closeModal();
+        modal.innerHTML = `<div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </header>
+
+          <form id="contact-form"></form>
+        </div>`;
+      }, 2500);
     }
   });
 }
