@@ -1,5 +1,4 @@
 let mediaModal = document.getElementById("media_modal");
-let contactForm = document.getElementById("contact_modal");
 let mediaLiked = [];
 
 async function getPhotographers() {
@@ -307,11 +306,6 @@ async function init() {
   displayPhotographerMedia(photographer);
   createMediaModal();
   displayPhotographerInfos();
-
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    closeModal();
-  });
 }
 
 init();
